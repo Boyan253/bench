@@ -14,3 +14,11 @@ def test_percentile_edges():
     values = list(range(1, 101))
     assert bench.percentile(values, 0.95) == 95
     assert bench.percentile(values, 1.0) == 100
+
+
+def test_percentile_single_value():
+    assert bench.percentile([7], 0.95) == 7
+
+def test_percentile_empty_raises():
+    with pytest.raises(ValueError):
+        bench.percentile([], 0.5)
