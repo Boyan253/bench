@@ -35,3 +35,12 @@ def test_fmt_scales_units():
     assert bench.fmt(0.0000005).endswith("us")
     assert bench.fmt(0.05).endswith("ms")
     assert bench.fmt(2.5).endswith("s")
+
+
+def test_bench_collects_one_sample_per_run():
+    samples = bench.bench(NOOP, runs=2, warmup=0)
+    assert len(samples) == 2
+
+def test_bench_raises_on_a_failing_command():
+    with pytest.raises(RuntimeError):
+        bench.bench([sys.executable, "-c", "raise SystemExit(3)"], runs=1, warmup=0)
