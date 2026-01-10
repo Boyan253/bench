@@ -15,3 +15,19 @@ python bench.py -n 20 -- python build.py
 python bench.py -n 50 -w 5 -- ./target/release/parser input.txt
 python bench.py --shell -n 10 -- "cat big.log | grep ERROR | wc -l"
 ```
+
+## Output
+
+```
+runs   20 (after 1 warmup)
+min    412.8 ms
+p50    431.1 ms
+p95    498.0 ms
+max    512.4 ms
+mean   439.7 ms
+stdev   24.9 ms
+```
+
+Compare **p50** between two builds, not `min` and not `mean`: the median is
+what a user actually experiences, and it is not dragged around by one unlucky
+run.
