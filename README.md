@@ -31,3 +31,12 @@ stdev   24.9 ms
 Compare **p50** between two builds, not `min` and not `mean`: the median is
 what a user actually experiences, and it is not dragged around by one unlucky
 run.
+
+## Notes
+
+- Warmup runs are executed and discarded, so caches and JITs are not measured.
+- A non-zero exit from the command aborts the benchmark — you cannot
+  accidentally benchmark a crash.
+- Command output is discarded so terminal I/O is not part of the timing.
+- `--shell` if you need pipes or redirection; without it the command is
+  executed directly, which is more accurate.
