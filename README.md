@@ -40,3 +40,10 @@ run.
 - Command output is discarded so terminal I/O is not part of the timing.
 - `--shell` if you need pipes or redirection; without it the command is
   executed directly, which is more accurate.
+
+## Tests
+
+```
+pip install pytest
+pytest
+```
