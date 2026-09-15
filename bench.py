@@ -8,6 +8,8 @@ import subprocess
 import sys
 import time
 
+__version__ = "0.1.0"
+
 
 def percentile(values, fraction):
     """Nearest-rank percentile: the smallest value at or above `fraction` of the data.
@@ -65,6 +67,8 @@ def bench(command, runs=10, warmup=1, shell=False, on_sample=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--version", action="version",
+                    version="%(prog)s " + __version__)
     ap.add_argument("-n", "--runs", type=int, default=10)
     ap.add_argument("-w", "--warmup", type=int, default=1)
     ap.add_argument("--shell", action="store_true", help="run through the shell")
